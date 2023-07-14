@@ -28,7 +28,6 @@ class LocalizationGenerator {
     final content = _getBaseContent(i18nDirectory);
     final generatedClass = _generateClass(content);
     _writeToFile(generatedClass);
-    _formatGeneratedFile();
   }
 
   Map<String, dynamic> _getBaseContent(Directory i18nDirectory) {
@@ -103,11 +102,6 @@ class LocalizationGenerator {
     final path = _getGeneratedFilePath();
     final file = File(path);
     file.writeAsStringSync(generatedContent);
-  }
-
-  void _formatGeneratedFile() {
-    final path = _getGeneratedFilePath();
-    Process.run('dart', ['format', path]);
   }
 
   String _getGeneratedFilePath() {
